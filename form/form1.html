@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Registration from Andrey Trufanov</title>
+	<link rel="stylesheet" href="/form/style1.css">
+</head>
+
+<body>
+	<script>
+		function getRandomInt(min, max) {
+			min = Math.ceil(min);
+			max = Math.floor(max);
+			return Math.floor(Math.random() * (max - min)) + min; //Максимум не включается, минимум включается
+		}
+		var a = getRandomInt(1, 50);
+		var b = getRandomInt(1, 50);
+		var answer = a + b;
+		function checkForm() {
+			switch ("") {
+				case document.getElementById("login").value:
+				case document.getElementById("mail").value:
+				case document.getElementById("phone").value:
+				case document.getElementById("pass1").value:
+				case document.getElementById("pass2").value:
+				case document.getElementById("captcha").value:
+					alert("Заполните все поля");
+					return false;
+			}
+			var errors = "";
+			if (document.getElementById("pass1").value != document.getElementById("pass2").value) {
+				errors += "Пароли не совпадают\n";
+			}
+			if (document.getElementById("captcha").value != answer) {
+				errors += "Каптча неверна\n";
+			}
+			if (errors != "") {
+				alert(errors.slice(0, -1));
+				return false;
+			}
+			return true;
+		}
+	</script>
+	<div class="content">
+		<form action="" method="post" name="form1" onsubmit="return checkForm();">
+			<h1 title="Форма регистрации на сайте">Registration</h1>
+
+			<div class="group">
+				<label for="">Login:</label>
+				<input type="text" placeholder="Логин" name="login" id="login">
+			</div>
+
+			<div class="group">
+				<label for="">Email Address:</label>
+				<input type="email" placeholder="Адрес электронной почты" name="mail" id="mail">
+			</div>
+
+			<div class="group">
+				<label for="">Phone:</label>
+				<input type="phone" placeholder="Номер телефона" name="number" id="phone">
+			</div>
+
+			<div class="group">
+				<label for="">Password:</label>
+				<input type="password" placeholder="Пароль" name="pass" id="pass1">
+			</div>
+
+			<div class="group">
+				<label for="">Confirm password:</label>
+				<input type="password" placeholder="Подтвердите пароль" id="pass2">
+			</div>
+
+			<div class="group">
+				<label for=""><script>document.write(a, "+", b, "=");</script></label>
+				<input type="text" placeholder="Ответ" id="captcha">
+			</div>
+
+			<div class="group">
+				<center><button>Sign Up</button></center>
+			</div>
+		</form>
+		<div class="two_content">
+			<div class="form2">
+				<form action="/form2" target="_self">
+					<button>Write a comment</button>
+				</form>
+			</div>
+			<div class="form3">
+				<form action="/form3" target="_self">
+					<button>User Comments</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
